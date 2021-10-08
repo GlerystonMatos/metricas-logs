@@ -2,10 +2,10 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'webapplication'
+  - job_name: 'web-application'
     scrape_interval: 5s
     static_configs:
-      - targets: ['webapplication:80']
+      - targets: ['web_application:80']
 
   - job_name: 'prometheus'
     static_configs:

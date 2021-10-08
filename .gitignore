@@ -350,3 +350,6 @@ Prometheus/*
 
 # Diretório com os dados do grafana
 Grafana/*
+
+# Diretório com os logs da aplicação
+Logs/*

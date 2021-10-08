@@ -1,7 +1,9 @@
 version: '3.9'
 services:
-  webapplication:
-    image: webapplication:later
+  web_application:
+    env_file:
+      - ./.env
+    image: web-application:1.0
     container_name: web-application
     build:
       context: .
@@ -10,6 +12,7 @@ services:
       - 8080:80
       - 8081:443
     volumes:
+      - ./logs:/logs
       - ./certificate:/app/certificate
       - ./temp-keys:/root/.aspnet/DataProtection-Keys
     environment:
@@ -18,7 +21,7 @@ services:
       - Kestrel__Certificates__Default__Path=/app/certificate/certificate.pfx
       - Kestrel__Certificates__Default__Password=1234 
     networks:
-      - prometheus_net
+      - docker_net
 
   prometheus:
     image: prom/prometheus
@@ -28,8 +31,36 @@ services:
     volumes:
       - ./prometheus:/prometheus
       - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - web_application
     networks:
-      - prometheus_net
+      - docker_net
+
+  loki:
+    image: grafana/loki
+    container_name: loki
+    command: 
+      - -config.file=/etc/loki/local-config.yaml
+      - -print-config-stderr=true
+    ports:
+      - 3100:3100
+    networks:
+      - docker_net
+
+  promtail:
+    image: grafana/promtail
+    container_name: promtail
+    command: -config.file=/etc/promtail/config.yml
+    ports:
+      - 9080:9080
+    volumes:
+      - ./logs:/logs
+      - ./promtail.yaml:/etc/promtail/config.yml
+    depends_on: 
+      - loki
+      - web_application
+    networks:
+      - docker_net
 
   grafana:
     image: grafana/grafana
@@ -40,9 +71,10 @@ services:
       - ./grafana:/var/lib/grafana
     depends_on:
       - prometheus
+      - loki
     networks:
-      - prometheus_net
+      - docker_net
 
 networks:
-  prometheus_net:
+  docker_net:
     driver: bridge
