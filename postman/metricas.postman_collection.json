@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "5ee5f631-2a72-42ae-89f6-f53e9c5b379f",
+		"name": "metricas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WeatherForecast",
+			"item": [
+				{
+					"name": "/WeatherForecast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"status é igual a 200\"] = responseCode.code === 200;\r",
+									"\r",
+									"try {\r",
+									"    responseJSON = JSON.parse(responseBody);\r",
+									"    tests['resposta é um JSON válido'] = true;\r",
+									"}\r",
+									"catch (e) {\r",
+									"    responseJSON = {};\r",
+									"    tests['resposta não é um JSON válido'] = false;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"idTeste\", responseJSON[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/WeatherForecast",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/WeatherForecast/{{idTeste}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"status é igual a 200\"] = responseCode.code === 200;\r",
+									"\r",
+									"try {\r",
+									"    responseJSON = JSON.parse(responseBody);\r",
+									"    tests['resposta é um JSON válido'] = true;\r",
+									"}\r",
+									"catch (e) {\r",
+									"    responseJSON = {};\r",
+									"    tests['resposta não é um JSON válido'] = false;\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/WeatherForecast/{{idTeste}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"WeatherForecast",
+								"{{idTeste}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WeatherForecast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"status é igual a 200\"] = responseCode.code === 200;\r",
+									"\r",
+									"try {\r",
+									"    responseJSON = JSON.parse(responseBody);\r",
+									"    tests['resposta é um JSON válido'] = true;\r",
+									"}\r",
+									"catch (e) {\r",
+									"    responseJSON = {};\r",
+									"    tests['resposta não é um JSON válido'] = false;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"idTeste\", responseJSON.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"1994-08-27T01:21:27.740502+00:00\",\r\n    \"temperatureC\": 7,\r\n    \"temperatureF\": 44,\r\n    \"summary\": \"Mild\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/WeatherForecast",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WeatherForecast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"status é igual a 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{idTeste}}\",\r\n    \"date\": \"1994-08-27T01:21:27.740502+00:00\",\r\n    \"temperatureC\": 7,\r\n    \"temperatureF\": 44,\r\n    \"summary\": \"Mild\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/WeatherForecast",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WeatherForecast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"status é igual a 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/WeatherForecast/{{idTeste}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"WeatherForecast",
+								"{{idTeste}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Log",
+			"item": [
+				{
+					"name": "/Log/Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Information",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Log/Debug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Debug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Debug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Log/Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Error",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Log/Trace",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Trace",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Trace"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Log/Warning",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Warning",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Warning"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Log/Critical",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Log/Critical",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Log",
+								"Critical"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

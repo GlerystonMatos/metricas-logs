@@ -23,13 +23,16 @@ namespace WebApplication.Controllers
             _logger = logger;
             _logger.LogDebug(1, "NLog injected into WeatherForecastController");
 
-            var rng = new Random();
-            _weatherForecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            if (_weatherForecasts == null)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            }).ToList();
+                var rng = new Random();
+                _weatherForecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(index),
+                    TemperatureC = rng.Next(-20, 55),
+                    Summary = Summaries[rng.Next(Summaries.Length)]
+                }).ToList();
+            }
         }
 
         [HttpGet]

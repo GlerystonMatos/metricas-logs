@@ -353,3 +353,6 @@ Grafana/*
 
 # Diretório com os logs da aplicação
 Logs/*
+
+# Diretório com os dados do loki
+Loki/*
