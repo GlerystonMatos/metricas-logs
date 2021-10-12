@@ -1,7 +1,7 @@
 # metricas-logs
 Monitoramento de métricas e centralização de logs em aplicações .NET Core
 
-<img src="https://github.com/GlerystonMatos/prometheus-net/blob/main/openAPM-Landscape.png" />
+<img src="https://github.com/GlerystonMatos/metricas-logs/blob/main/openAPM-Landscape.png" />
 
 Para criar o ambiente com docker execute o comando a seguir em um console na pasta do arquivo docker-compose.yaml:
 
