@@ -1,5 +1,5 @@
-# prometheus-net
-Monitoramento de aplicações .NET Core com Prometheus
+# metricas-logs
+Monitoramento de métricas e centralização de logs em aplicações .NET Core
 
 <img src="https://github.com/GlerystonMatos/prometheus-net/blob/main/openAPM-Landscape.png" />
 
