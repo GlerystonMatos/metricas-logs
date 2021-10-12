@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "5ee5f631-2a72-42ae-89f6-f53e9c5b379f",
-		"name": "metricas",
+		"name": "metricas-logs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -92,7 +92,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"tests[\"status é igual a 200\"] = responseCode.code === 200;\r",
+									"tests[\"status é igual a 201\"] = responseCode.code === 201;\r",
 									"\r",
 									"try {\r",
 									"    responseJSON = JSON.parse(responseBody);\r",

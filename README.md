@@ -1,6 +1,8 @@
 # prometheus-net
 Monitoramento de aplicações .NET Core com Prometheus
 
+<img src="https://github.com/GlerystonMatos/prometheus-net/blob/main/openAPM-Landscape.png" />
+
 Para criar o ambiente com docker execute o comando a seguir em um console na pasta do arquivo docker-compose.yaml:
 
 ```bash
@@ -10,6 +12,10 @@ Aplicação WEB:
 
 ```bash
 https://localhost:8081/WeatherForecast
+```
+
+```bash
+https://localhost:8081/Log/Information
 ```
 
 Metricas da aplicação WEB:
