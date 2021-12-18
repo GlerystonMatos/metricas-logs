@@ -1,0 +1,72 @@
+version: '3.9'
+services:
+  web_application:
+    env_file:
+      - ./.env
+    restart: on-failure
+    image: treinamento/web-application:1.0
+    container_name: web-application
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+      - 8081:443
+    volumes:
+      - ./certificate:/app/certificate
+      - ./temp-keys:/root/.aspnet/DataProtection-Keys
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=443
+      - Kestrel__Certificates__Default__Path=/app/certificate/certificate.pfx
+      - Kestrel__Certificates__Default__Password=1234 
+    networks:
+      - docker_net
+
+  prometheus:
+    image: treinamento/prometheus:1.0
+    container_name: prometheus
+    build:
+      context: .
+      dockerfile: Dockerfile.prometheus
+    depends_on:
+      - web_application
+    ports:
+      - 9090:9090
+    volumes:
+      - ./treinamento/prometheus:/prometheus
+    networks:
+      - docker_net
+
+  loki:
+    image: treinamento/loki:1.0
+    container_name: loki
+    build:
+      context: .
+      dockerfile: Dockerfile.loki
+    ports:
+      - 3100:3100
+    volumes:
+      - ./treinamento/loki:/data/loki
+    networks:
+      - docker_net
+
+  grafana:
+    image: treinamento/grafana:1.0
+    container_name: grafana
+    build:
+      context: .
+      dockerfile: Dockerfile.grafana
+    depends_on:
+      - prometheus
+      - loki
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana:/var/lib/grafana
+    networks:
+      - docker_net
+
+networks:
+  docker_net:
+    driver: bridge
