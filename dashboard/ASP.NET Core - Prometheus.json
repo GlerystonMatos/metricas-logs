@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,18 +23,22 @@
   },
   "description": "",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 10915,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1634599961859,
+  "id": 7,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -69,7 +76,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -79,6 +86,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "exemplar": true,
           "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller =~ \"$controllers\"}[3m])) by (controller, action)",
           "interval": "",
@@ -86,15 +97,17 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller = \"\"}[3m]))",
           "legendFormat": "(None)",
           "refId": "B"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Requests received by controller and action",
       "tooltip": {
         "shared": true,
@@ -103,38 +116,32 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "reqps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -177,7 +184,6 @@
         "y": 0
       },
       "id": 5,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -195,22 +201,26 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller =~ \"$controllers\"}[3m]))",
           "instant": false,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total req/s",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+      },
       "description": "Across ALL controllers globally!",
       "fieldConfig": {
         "defaults": {
@@ -253,7 +263,6 @@
         "y": 0
       },
       "id": 9,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -271,16 +280,18 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "expr": "sum(http_requests_in_progress{instance =~ \"$instances\"})",
           "instant": false,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "In progress (global)",
       "type": "stat"
     },
@@ -289,7 +300,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+      },
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -317,7 +331,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -327,6 +341,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "exemplar": true,
           "expr": "max(increase(http_request_duration_seconds_bucket{instance =~ \"$instances\", controller =~ \"$controllers\"}[$__interval])/1000) by (controller, action)",
           "format": "heatmap",
@@ -338,9 +356,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Request duration by controller and action",
       "tooltip": {
         "shared": true,
@@ -349,33 +365,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -383,7 +390,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+      },
       "description": "4xx and 5xx status codes",
       "fieldConfig": {
         "defaults": {
@@ -421,7 +431,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -431,20 +441,26 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller =~ \"$controllers\", code =~ \"5\\\\d\\\\d|4\\\\d\\\\d\"}[3m])) by (controller)",
           "legendFormat": "{{controller}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+          },
           "expr": "sum(rate(http_requests_received_total{instance =~ \"$instances\", controller = \"\", code =~ \"5\\\\d\\\\d|4\\\\d\\\\d\"}[3m])) by (controller)",
           "legendFormat": "(None)",
           "refId": "B"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Error rate by controller",
       "tooltip": {
         "shared": true,
@@ -453,53 +469,45 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "reqps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
-  "refresh": false,
-  "schemaVersion": 30,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+        },
         "definition": "label_values(http_requests_received_total, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Instances",
@@ -520,16 +528,16 @@
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "a1d5aecb-6fd5-4fa0-b425-6ff7eb6d0b7a"
+        },
         "definition": "label_values(http_requests_received_total{instance =~ \"$instances\"}, controller)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Controllers",
@@ -572,5 +580,6 @@
   "timezone": "",
   "title": "ASP.NET Core - Prometheus",
   "uid": "h1FE3PpWk",
-  "version": 3
+  "version": 1,
+  "weekStart": ""
 }

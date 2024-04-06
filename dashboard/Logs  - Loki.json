@@ -4,7 +4,10 @@
       {
         "$$hashKey": "object:75",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,10 +24,10 @@
   },
   "description": "",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 13639,
   "graphTooltip": 0,
-  "id": 9,
-  "iteration": 1634600177504,
+  "id": 6,
   "links": [
     {
       "$$hashKey": "object:59",
@@ -47,13 +50,17 @@
       "url": "https://grafana.com/docs/loki/latest/logql/"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Loki",
+      "datasource": {
+        "type": "loki",
+        "uid": "c1dd3021-1752-41a0-850f-040513372f3d"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -86,7 +93,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "10.0.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -96,15 +103,17 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "loki",
+            "uid": "c1dd3021-1752-41a0-850f-040513372f3d"
+          },
           "expr": "sum(count_over_time({job=\"$app\"} |= \"$search\" [$__interval]))",
           "legendFormat": "",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -112,9 +121,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -122,29 +129,25 @@
         {
           "$$hashKey": "object:168",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         },
         {
           "$$hashKey": "object:169",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "Loki",
+      "datasource": {
+        "type": "loki",
+        "uid": "c1dd3021-1752-41a0-850f-040513372f3d"
+      },
       "gridPos": {
         "h": 25,
         "w": 24,
@@ -165,35 +168,37 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "loki",
+            "uid": "c1dd3021-1752-41a0-850f-040513372f3d"
+          },
           "expr": "{job=\"$app\"} |= \"$search\" | logfmt",
           "hide": false,
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "transparent": true,
       "type": "logs"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 30,
+  "refresh": "5s",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "selected": false,
-          "text": "naja_api",
-          "value": "naja_api"
+          "selected": true,
+          "text": "naja-api-core",
+          "value": "naja-api-core"
         },
-        "datasource": "Loki",
+        "datasource": {
+          "type": "loki",
+          "uid": "c1dd3021-1752-41a0-850f-040513372f3d"
+        },
         "definition": "label_values(job)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "App",
@@ -213,34 +218,33 @@
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "Login realizado",
+          "value": "Login realizado"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "label": "String Match",
         "name": "search",
         "options": [
           {
             "selected": true,
-            "text": "",
-            "value": ""
+            "text": "Login realizado",
+            "value": "Login realizado"
           }
         ],
-        "query": "",
+        "query": "Login realizado",
         "skipUrlSync": false,
         "type": "textbox"
       }
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
     "hidden": false,
     "refresh_intervals": [
+      "5s",
       "10s",
       "30s",
       "1m",
@@ -255,5 +259,6 @@
   "timezone": "",
   "title": "Logs  - Loki",
   "uid": "liz0yRCZz",
-  "version": 3
+  "version": 2,
+  "weekStart": ""
 }
