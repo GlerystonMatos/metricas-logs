@@ -257,8 +257,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Logs - PostgreSQL",
+  "title": "Logs - Microsoft SQL Server",
   "uid": "c6ccae3e-3173-4336-9463-9748bc4d3d4d",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
